@@ -1,0 +1,4 @@
+(executable
+ (public_name crud_operations)
+ (name main)
+ (libraries crud_operations))
