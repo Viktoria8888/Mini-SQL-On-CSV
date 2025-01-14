@@ -1,2 +1,4 @@
 (test
- (name test_crud_operations))
+ (name test_parser)
+ (libraries interp)
+ (modules test_parser))
