@@ -1,0 +1,14 @@
+#use "testing";;
+f "READ column1 FROM table1 WHERE column2 = value2";;
+(* Exception: Interp.Parser.MenhirBasics.Error. *)
+f "READ column1 FROM table1 WHERE column2 ";;
+(* Exception: Interp.Parser.MenhirBasics.Error. *)
+f "READ col FROM t WHERE t > 2";;
+(* - : Interp.Ast.command =
+Interp.Ast.Read ("col", "t", Some (Interp.Ast.Greater ("t", "2"))) *)
+f "READ col FROM t WHERE t = 2";;
+(* - : Interp.Ast.command =
+Interp.Ast.Read ("col", "t", Some (Interp.Ast.Equal ("t", "2"))) *)
+f "SELECT * FROM t WHERE t = 2";;
+(* - : Interp.Ast.command =
+Interp.Ast.SelectAll ("t", Some (Interp.Ast.Equal ("t", "2"))) *)

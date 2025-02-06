@@ -1,13 +1,18 @@
 (test
  (name test_parser)
- (libraries interp)
+ (libraries query_engine)
  (modules test_parser))
-
 
 (test
  (name test_data_manipulation)
- (libraries interp)
+ (libraries query_engine)
  (modules test_data_manipulation)
  (deps
-  ; %{project_root} indicate project root according to https://dune.readthedocs.io/en/stable/concepts/variables.html
-  (file %{workspace_root}/csv_files/username_file.csv)))
+  (source_tree ../csv_files)))
+
+(test
+ (name test_eval)
+ (libraries query_engine)
+ (modules test_eval)
+ (deps
+  (source_tree ../csv_files)))

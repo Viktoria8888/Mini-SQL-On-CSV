@@ -1,8 +1,9 @@
-type condition = 
-  | Equal of   string  * string
-  | Greater of string  * string
-  
-type command = (*starting rule for parsing*)
+type condition =
+  | Equal of string * string
+  | Greater of string * string
+
+type command =
+  (*starting rule for parsing*)
   (* | Create of string * (string * string) list *)
   | Read of string * string * condition option
   | Delete of string * condition option

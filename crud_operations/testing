@@ -1,0 +1,7 @@
+let f = Interp.Main.parse;;
+(* val f : string -> Interp.Ast.command = <fun> *)
+f "READ col FROM t";;
+(* - : Interp.Ast.command = Interp.Ast.Read ("col", "t", None) *)
+f "READ col FROM t";;
+(* - : Interp.Ast.command = Interp.Ast.Read ("col", "t", None) *)
+

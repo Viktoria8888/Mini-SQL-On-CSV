@@ -1,0 +1,22 @@
+# Basic options
+profile = default        # or 'conventional', 'janestreet'
+margin = 80             # Maximum line width
+wrap-comments = true    # Wrap comments
+
+# Indentation options
+type-decl = sparse      # Spacing in type declarations
+space-around-arrays = true
+space-around-lists = true
+space-around-records = true
+sequence-style = terminator  # Separator style for sequences
+
+
+# Break options
+break-cases = all       # Break pattern matching cases
+break-fun-decl = wrap   # Function declaration style
+break-separators = before  # Separator break style
+
+# Documentation options
+doc-comments = before   # Documentation comment style
+doc-comments-padding = 2
+doc-comments-tag-only = default
