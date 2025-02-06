@@ -12,8 +12,8 @@ let rec assign_cols table names cols =
   | _ :: _, [] -> failwith "incorrect sizes"
   | x :: xs, y :: ys ->
       Hashtbl.add table x y;
-      assign_cols table xs ys;
-      Printf.printf "Adding column: %s: %b\n" x (Hashtbl.mem table x)
+      assign_cols table xs ys
+      (* Printf.printf "Adding column: %s: %b\n" x (Hashtbl.mem table x) *)
 
 let rec transpose (xs : string list list) =
   match xs with
@@ -27,9 +27,9 @@ let rec transpose (xs : string list list) =
 let new_form (xs : string list list) (table : (string, column) Hashtbl.t) : unit
     =
   let transposed = transpose xs in
-  assign_cols table !column_names transposed;
-  Printf.printf "num of column names = num of columns after transposing: %b\n"
-    (List.length !column_names = List.length transposed)
+  assign_cols table !column_names transposed
+  (* Printf.printf "num of column names = num of columns after transposing: %b\n"
+    (List.length !column_names = List.length transposed) *)
 (* assert (List.length !column_names = List.length transposed+1) *)
 
 (* List.iter (fun row -> Printf.printf "Row: %s\n" (String.concat ", " row))
