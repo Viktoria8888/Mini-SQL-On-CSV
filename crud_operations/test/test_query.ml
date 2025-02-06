@@ -67,26 +67,26 @@ let test_eval_select_all () =
 
   Printf.printf "test_eval_select_all passed!\n"
 
-  let test_eval_delete () =
-    let table = Hashtbl.create 10 in
-    setup_test_data table;
+let test_eval_delete () =
+  let table = Hashtbl.create 10 in
+  setup_test_data table;
     
-    (* Test delete rows with condition *)
-    let cond = Greater("Salary", "60000") in
-    let cmd = Delete("", Some cond) in
-    let result = eval cmd table in
-    (match result with
-    | Ok (Right msg) ->
-        assert (msg = "Rows matching condition were deleted");
-        let salary_col = Hashtbl.find table "Salary" in
-        assert (not (List.mem "75000" salary_col));
-        assert (not (List.mem "80000" salary_col))
-    | Ok (Left _) -> failwith "Expected Right result, got Left"
-    | Error InvalidCondition -> failwith "Invalid condition"
-    | Error _ -> failwith "Unexpected error");
+  (* Test delete rows with condition *)
+  let cond = Greater("Salary", "60000") in
+  let cmd = Delete("test_delete.csv", Some cond) in  (* Include filename in command *)
+  let result = eval cmd table in
+  (match result with
+  | Ok (Right msg) ->
+      assert (msg = "Rows matching condition were deleted");
+      let salary_col = Hashtbl.find table "Salary" in
+      assert (not (List.mem "75000" salary_col));
+      assert (not (List.mem "80000" salary_col))
+  | Ok (Left _) -> failwith "Expected Right result, got Left"
+  | Error InvalidCondition -> failwith "Invalid condition"
+  | Error (FileNotFound f) -> failwith ("File not found: " ^ f)
+  | Error _ -> failwith "Unexpected error11");
   
-    Printf.printf "test_eval_delete passed!\n"
-
+  Printf.printf "test_eval_delete passed!\n"
 let test_error_cases () =
   let table = Hashtbl.create 10 in
   setup_test_data table;

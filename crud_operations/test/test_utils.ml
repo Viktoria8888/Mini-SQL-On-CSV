@@ -22,3 +22,12 @@ let setup_mock_data () =
   Hashtbl.add mock_data "Attrition" ["Yes"; "No"; "Yes"]
 
 let csv_data : (string, column) Hashtbl.t = Hashtbl.create 200
+
+
+
+let test_csv_file = "../csv_files/test.csv"
+
+let setup_test_file () =
+  let oc = open_out test_csv_file in
+  output_string oc "Age,Salary,Department\n25,50000,IT\n30,60000,HR\n35,75000,Sales\n40,80000,IT\n";
+  close_out oc

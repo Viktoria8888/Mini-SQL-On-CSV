@@ -3,12 +3,14 @@
 (test
  (name test_main)
  (libraries 
-   query_engine)
+   query_engine
+   unix)
  (modules 
    test_main
    test_data_manipulation
    test_query
    test_parser
-   test_utils)
+   test_utils
+   test_update_csv)
   (deps
   (source_tree ../csv_files)))

@@ -1,6 +1,7 @@
 open Ast
 open Types
 open Monad
+open Query
 let parse (s : string) : (command, errors) res =
   try
     let lexbuf = Lexing.from_string s in
@@ -8,3 +9,4 @@ let parse (s : string) : (command, errors) res =
     return ast
   with
   | _ -> Error (ParseError "failed to parse query")
+

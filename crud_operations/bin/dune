@@ -1,4 +1,4 @@
 (executable
- (public_name crud_operations)
+ (public_name csv_query)
  (name main)
  (libraries query_engine))

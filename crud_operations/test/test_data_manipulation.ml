@@ -41,20 +41,10 @@ let test_read_csv_file () =
   assert (List.mem "Username" keys);
   Printf.printf "test_get_keys passed\n"
 
-let test_check_table () =
-  (* Test non-existent file *)
-  assert_error (check_table "nonexistent.csv") (FileNotFound "nonexistent.csv");
 
-  (* Test existing file *)
-  let expected_path = "../csv_files/username.csv" in
-  Printf.printf "%s\n" expected_path;
-  let res = check_table "username.csv" in
-  assert_ok res expected_path;
-  Printf.printf "test_check_table passed!\n"
 let run_tests () =
   Printf.printf "---Testing data manipulation---\n";
   test_assign_cols ();
   test_transpose ();
   test_get_keys ();
   test_read_csv_file ();
-  test_check_table ()

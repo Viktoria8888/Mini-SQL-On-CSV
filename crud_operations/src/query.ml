@@ -161,7 +161,10 @@ let eval (q : command) (table : (string, column) Hashtbl.t) : query_res =
   | SelectAll (_, cond_opt) ->
       let* result = eval_select_all cond_opt table in
       return (Left result)
-  | Delete (_, cond_opt) -> (
-      let* msg = eval_del cond_opt table in
-      return (Right msg))
-
+  | Delete (tab_name, cond_opt) -> (
+    let* msg = (eval_del cond_opt table) in
+    let full_path = Filename.concat "../csv_files/" tab_name in
+    (match (Update_csv.write_csv_file full_path table) with
+    | Ok () -> return (Right msg)
+    | Error e -> Error e)
+  )

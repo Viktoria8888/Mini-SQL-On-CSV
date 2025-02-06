@@ -1,6 +1,6 @@
 (library
  (name query_engine)
- (modules ast lexer parser data_manipulation monad types transform query print_table)
+ (modules ast lexer parser data_manipulation monad types update_csv query print_table)
  (libraries csv))
 
 (menhir
