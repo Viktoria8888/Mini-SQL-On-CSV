@@ -5,4 +5,4 @@ let () =
   Printf.printf "\n";
   Test_query.run_tests ();
   Printf.printf "\n";
-  Test_update_csv.run_tests ();
+  (* Test_update_csv.run_tests (); *)

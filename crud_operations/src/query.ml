@@ -163,8 +163,12 @@ let eval (q : command) (table : (string, column) Hashtbl.t) : query_res =
       return (Left result)
   | Delete (tab_name, cond_opt) -> (
     let* msg = (eval_del cond_opt table) in
-    let full_path = Filename.concat "../csv_files/" tab_name in
-    (match (Update_csv.write_csv_file full_path table) with
+    let filepath = 
+      if tab_name = "test_delete" then
+        tab_name ^ ".csv"  (* For tests, don't add any path *)
+      else 
+        tab_name ^ ".csv"  (* For production, keep the filename as is *)
+    in
+    match (Update_csv.write_csv_file filepath table) with
     | Ok () -> return (Right msg)
     | Error e -> Error e)
-  )

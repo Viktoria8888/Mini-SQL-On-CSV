@@ -35,12 +35,13 @@ let new_form (xs : string list list) (table : (string, column) Hashtbl.t) : unit
 (* List.iter (fun row -> Printf.printf "Row: %s\n" (String.concat ", " row))
    transposed *)
 
-let read_csv_file filename table =
+let read_csv_file (filename:string) table   =
   try
     let file = Csv.load filename in
     match file with
     | [] -> Error EmptyFile
     | fst_row :: rows ->
+        Hashtbl.clear table;
         column_names := fst_row;
         new_form rows table;
         return data

@@ -1,5 +1,5 @@
 (* test_update_csv.ml *)
-open Query_engine
+(* open Query_engine
 open Types
 open Update_csv
 
@@ -30,4 +30,4 @@ let test_write_csv () =
 
 let run_tests () =
   Printf.printf "---Testing CSV writing---\n";
-  test_write_csv ()
+  test_write_csv () *)

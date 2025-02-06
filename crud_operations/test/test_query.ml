@@ -28,7 +28,7 @@ let test_eval_read () =
       assert (List.hd res.data = ["25"; "30"; "35"; "40"])
   | _ -> failwith "Expected Ok (Left result)");
 
-  (* Test read with Equal condition *)
+
   let cond = Equal("Age", "30") in
   let cmd = Read("Salary", "", Some cond) in
   let result = eval cmd table in
@@ -44,7 +44,7 @@ let test_eval_select_all () =
   let table = Hashtbl.create 10 in
   setup_test_data table;
 
-  (* Test select all without condition *)
+
   let cmd = SelectAll("", None) in
   let result = eval cmd table in
   (match result with
@@ -73,7 +73,7 @@ let test_eval_delete () =
     
   (* Test delete rows with condition *)
   let cond = Greater("Salary", "60000") in
-  let cmd = Delete("test_delete.csv", Some cond) in  (* Include filename in command *)
+  let cmd = Delete("test_delete", Some cond) in 
   let result = eval cmd table in
   (match result with
   | Ok (Right msg) ->
