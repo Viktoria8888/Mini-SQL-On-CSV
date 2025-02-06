@@ -27,4 +27,6 @@ let test_parser () =
       else Printf.printf "Test failed for input: %s\n" input)
     test_cases
 
-let () = test_parser ()
+let run_tests () =
+  Printf.printf "---Testing parser---\n";
+  test_parser ()

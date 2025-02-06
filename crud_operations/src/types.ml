@@ -18,8 +18,8 @@ type ('a, 'e) res =
   | Error of 'e
 
 type table_result = {
-  columns: string list;
-  data: string list list;
+    columns : string list
+  ; data : string list list
 }
 
 type query_res = ((table_result, string) either, errors) res

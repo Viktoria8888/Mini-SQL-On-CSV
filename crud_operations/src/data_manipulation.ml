@@ -40,14 +40,11 @@ let read_csv_file filename table =
     let file = Csv.load filename in
     match file with
     | [] -> Error EmptyFile
-    (* | fst_row::rows -> column_names := fst_row; new_form rows;
-       ResultMonad.return data; *)
     | fst_row :: rows ->
         column_names := fst_row;
         new_form rows table;
         return data
-    (* List.iter (fun row -> Printf.printf "%s\n" (String.concat ", " row))
-       data; data *)
+
   with
   | Sys_error msg ->
       Printf.printf "Error reading file: %s\n" msg;
@@ -58,5 +55,7 @@ let read_csv_file filename table =
 
 let get_keys table = Hashtbl.fold (fun key _ acc -> key :: acc) table []
 
-(* let () = let _ = read_csv_file filename data in Printf.printf "Does username
-   exist? %b\n" (Hashtbl.mem data "Username") *)
+
+let check_table (name : string) : (string, errors) res =
+let file_path = Filename.concat "../csv_files/" name in
+if Sys.file_exists file_path then Ok file_path else Error (FileNotFound name)

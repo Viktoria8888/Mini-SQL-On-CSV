@@ -1,18 +1,14 @@
-(test
- (name test_parser)
- (libraries query_engine)
- (modules test_parser))
+
 
 (test
- (name test_data_manipulation)
- (libraries query_engine)
- (modules test_data_manipulation)
- (deps
-  (source_tree ../csv_files)))
-
-(test
- (name test_eval)
- (libraries query_engine)
- (modules test_eval)
- (deps
+ (name test_main)
+ (libraries 
+   query_engine)
+ (modules 
+   test_main
+   test_data_manipulation
+   test_query
+   test_parser
+   test_utils)
+  (deps
   (source_tree ../csv_files)))
