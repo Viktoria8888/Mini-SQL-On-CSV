@@ -13,8 +13,8 @@ let test_parser () =
     [
       ( "READ column1 FROM table1 WHERE column2 = 2"
       , Some (Read ("column1", "table1", Some (Equal ("column2", "2")))) )
-    ; ( "DELETE col1 WHERE column1 = 1"
-      , Some (Delete ("col1", Some (Equal ("column1", "1")))) )
+    ; ( "DELETE FROM table1 WHERE column1 = 1"
+      , Some (Delete ("table1", Some (Equal ("column1", "1")))) )
     ; ( "SELECT * FROM table1 WHERE column1 > 1"
       , Some (SelectAll ("table1", Some (Greater ("column1", "1")))) )
     ]

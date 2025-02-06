@@ -28,8 +28,7 @@
   | IDENT GREATER VALUE       { Greater ($1, $3) }
 
   delete_command:
-  | DELETE; i = IDENT; clause=where_clause { Delete (i, clause) }
-  | DELETE; i= IDENT              { Delete (i, None) }
+  | DELETE FROM; i = IDENT; clause=where_clause { Delete (i, clause) }
 
   select_command:
   | STAR FROM IDENT where_clause { SelectAll ($3, $4) }

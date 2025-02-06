@@ -3,3 +3,4 @@ let () =
   Printf.printf "\n";
   Test_parser.run_tests ();
   Printf.printf "\n";
+  Test_query.run_tests ();
