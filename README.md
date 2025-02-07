@@ -1,17 +1,27 @@
 # Mini SQL on CSV using Ocaml
 
 ## The outline of the project
-* Parser + Lexer for the subset SQL queries - *DONE*
-* Basic representation of CSV               - *DONE*
+* Parser + Lexer for the subset SQL queries
+* Basic representation of CSV               
 * Error management using monad
 * User Interface
 
+## What example commands are implemented so far?
+- SELECT * FROM username_file
 
-### User Interface (in the future)
-#### basic navigation
-* R: read csv file (just one at the moment)
-* I: input the query
-* F: finish the program.
+- READ Username FROM username_file
 
-## TO DO
-1) easy file path access
+- READ Username FROM username_file WHERE Identifier > 5000
+
+- DELETE FROM username_file WHERE Identifier = 4081
+
+## How to run
+Place your csv file to program/csv_files folder
+
+```
+cd program
+dune build
+dune exec csv_query username_file.csv
+```
+
+![alt text](image.png)

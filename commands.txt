@@ -1,0 +1,9 @@
+SELECT * FROM username_file
+
+READ Username FROM username_file
+
+READ Username FROM username_file WHERE Identifier > 5000
+
+DELETE FROM username_file WHERE Identifier = 4081
+
+cat csv_files/username_file_copy.csv > csv_files/username_file.csv
